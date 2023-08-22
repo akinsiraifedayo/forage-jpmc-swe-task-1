@@ -32,10 +32,10 @@ N = 500
 def getDataPoint(quote):
     """ Produce all the needed values to generate a datapoint """
     """ ------------- Update this function ------------- """
-    stock = quote['stock']
-    bid_price = float(quote['top_bid']['price'])
-    ask_price = float(quote['top_ask']['price'])
-    price = (bid_price + ask_price)/2
+    stock = quote['stock'] # ABC # DEF
+    bid_price = float(quote['top_bid']['price']) # 115.46 # 115.14
+    ask_price = float(quote['top_ask']['price']) # 116.05 # 116.05
+    price = (bid_price + ask_price)/2 # Average of the two
     return stock, bid_price, ask_price, price
 
 
@@ -57,8 +57,8 @@ if __name__ == "__main__":
         """ ----------- Update to get the ratio --------------- """
         prices = {}
         for quote in quotes:
-            stock, bid_price, ask_price, price = getDataPoint(quote)
-            prices[stock] = price
-            print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+            stock, bid_price, ask_price, price = getDataPoint(quote) # get data from api to 
+            prices[stock] = price # append dict to dict with key as stock name and price ast the item
+            print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price)) # very strange formatting but its similar to f strings
 
-        print("Ratio %s" % getRatio(prices['ABC'], prices['DEF']))
+        print("Ratio %s" % getRatio(prices['ABC'], prices['DEF'])) # getting ratio of # ABC and # DEF
